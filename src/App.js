@@ -1,7 +1,8 @@
 import useSignUpForm from "./CustomHooks";
 
 const Signup = () => {
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm();
+  const { inputs, handleInputChange, handleSubmit, handleNameChange } =
+    useSignUpForm();
 
   return (
     <form onSubmit={handleSubmit}>
@@ -19,9 +20,9 @@ const Signup = () => {
         <label>First Name</label>
         <input
           type="text"
-          name="firstName"
-          onChange={handleInputChange}
-          value={inputs.firsName}
+          name="name"
+          onChange={handleNameChange}
+          value={inputs.name}
           maxLength={12}
           required
         />
