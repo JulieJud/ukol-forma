@@ -1,13 +1,27 @@
 import useSignUpForm from "./CustomHooks";
 
 const Signup = () => {
+  //const [passwordShown, setPasswordShown] = useState(false);
+
+  // const togglePassword = () => {
+  //  setPasswordShown(!passwordShown);
+  // };
+
+  //  const handleClickShowPassword = (fieldName) => {
+  // setValues({
+  // ...values,
+  //   showPassword: fieldName === values.showPassword ? "" : fieldName,
+  //  });
+  // };
+
   const {
     inputs,
-    passwordShown,
+    values,
     handleInputChange,
     handleSubmit,
-    handleNameChange,
-    togglePassword,
+    handleClickShowPassword,
+    //togglePassword,
+    //handleNameChange,
   } = useSignUpForm();
 
   return (
@@ -17,6 +31,7 @@ const Signup = () => {
         <input
           type="email"
           name="email"
+          autoComplete="off"
           onChange={handleInputChange}
           value={inputs.email}
           required
@@ -37,24 +52,36 @@ const Signup = () => {
       <div>
         <label>Password</label>
         <input
-          type={passwordShown ? "text" : "password"}
+          // type={passwordShown ? "text" : "password"}
+          type={values.showPassword === "password1" ? "text" : "password"}
           name="password1"
           onChange={handleInputChange}
           value={inputs.password1}
           required
         />
-        <button onClick={togglePassword}>Show Password</button>
+
+        <button
+          type="button"
+          onClick={() => handleClickShowPassword("password1")}
+        >
+          Show Password
+        </button>
       </div>
       <div>
         <label>Re-enter Password</label>
         <input
-          type={passwordShown ? "text" : "password"}
+          type={values.showPassword === "password2" ? "text" : "password"}
           name="password2"
           onChange={handleInputChange}
           value={inputs.password2}
           required
         />
-        <button onClick={togglePassword}>Show Password</button>
+        <button
+          type="button"
+          onClick={() => handleClickShowPassword("password2")}
+        >
+          Show Password
+        </button>
       </div>
       <button type="submit">Sign Up</button>
     </form>

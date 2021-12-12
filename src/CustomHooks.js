@@ -1,9 +1,6 @@
 import { useState } from "react";
 
 const useSignUpForm = (callback) => {
-  // const [inputs, setInputs] = useState({});
-
-  const [passwordShown, setPasswordShown] = useState(false);
   const [inputs, setInputs] = useState(() => {
     return {
       name: "",
@@ -12,7 +9,16 @@ const useSignUpForm = (callback) => {
       password2: "",
     };
   });
+  const [values, setValues] = useState({
+    showPassword: false,
+  });
 
+  const handleClickShowPassword = (fieldName) => {
+    setValues({
+      ...values,
+      showPassword: fieldName === values.showPassword ? "" : fieldName,
+    });
+  };
   /* const handleNameChange = (event) => {
     const index = inputs.email.indexOf("@");
     const name = inputs.email.slice(0, index);
@@ -37,14 +43,12 @@ const useSignUpForm = (callback) => {
     console.log(event.target.value);
   };
 
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputs.password1 !== inputs.password2) {
       alert("error");
+    } else {
+      alert(setInputs());
     }
   };
 
@@ -52,8 +56,11 @@ const useSignUpForm = (callback) => {
     handleSubmit,
     // handleNameChange,
     handleInputChange,
-    togglePassword,
+    //togglePassword,
+    handleClickShowPassword,
+    values,
     inputs,
   };
 };
+
 export default useSignUpForm;
