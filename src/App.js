@@ -1,4 +1,5 @@
 import useSignUpForm from "./CustomHooks";
+import { usePasswordValidation } from "./Validation";
 
 const Signup = () => {
   //const [passwordShown, setPasswordShown] = useState(false);
@@ -23,6 +24,12 @@ const Signup = () => {
     //togglePassword,
     //handleNameChange,
   } = useSignUpForm();
+
+  const [validLength, hasNumber, upperCase, lowerCase, match, specialChar] =
+    usePasswordValidation({
+      password1: inputs.password1,
+      password2: inputs.password2,
+    });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -82,6 +89,28 @@ const Signup = () => {
         >
           Show Password
         </button>
+        <div>
+          <ul>
+            <li>
+              Valid Length:{" "}
+              {validLength ? <span>True</span> : <span>False</span>}
+            </li>
+            <li>
+              Has a Number: {hasNumber ? <span>True</span> : <span>False</span>}
+            </li>
+            <li>
+              UpperCase: {upperCase ? <span>True</span> : <span>False</span>}
+            </li>
+            <li>
+              LowerCase: {lowerCase ? <span>True</span> : <span>False</span>}
+            </li>
+            <li>Match: {match ? <span>True</span> : <span>False</span>}</li>
+            <li>
+              Special Character:{" "}
+              {specialChar ? <span>True</span> : <span>False</span>}
+            </li>
+          </ul>
+        </div>
       </div>
       <button type="submit">Sign Up</button>
     </form>
