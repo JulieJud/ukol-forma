@@ -21,10 +21,13 @@ const useSignUpForm = (callback) => {
   };*/
 
   const handleInputChange = (event) => {
-    // const index = inputs.email.indexOf("@");
-    //const name = inputs.email.slice(0, index);
     const name = inputs.email.substring(0, inputs.email.lastIndexOf("@"));
-    inputs.name = name;
+    if (name.length < 12) {
+      inputs.name = name;
+    } else {
+      inputs.name = inputs.email.substring(0, 12);
+    }
+
     event.persist();
     setInputs((inputs) => ({
       ...inputs,
