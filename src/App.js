@@ -2,27 +2,14 @@ import useSignUpForm from "./CustomHooks";
 import { usePasswordValidation } from "./Validation";
 
 const Signup = () => {
-  //const [passwordShown, setPasswordShown] = useState(false);
-
-  // const togglePassword = () => {
-  //  setPasswordShown(!passwordShown);
-  // };
-
-  //  const handleClickShowPassword = (fieldName) => {
-  // setValues({
-  // ...values,
-  //   showPassword: fieldName === values.showPassword ? "" : fieldName,
-  //  });
-  // };
-
   const {
     inputs,
-    values,
+    valuesPassword1,
+    valuesPassword2,
     handleInputChange,
     handleSubmit,
-    handleClickShowPassword,
-    //togglePassword,
-    //handleNameChange,
+    handleClickShowPassword1,
+    handleClickShowPassword2,
   } = useSignUpForm();
 
   const [validLength, hasNumber, upperCase, lowerCase, match, specialChar] =
@@ -59,8 +46,9 @@ const Signup = () => {
       <div>
         <label>Password</label>
         <input
-          // type={passwordShown ? "text" : "password"}
-          type={values.showPassword === "password1" ? "text" : "password"}
+          type={
+            valuesPassword1.showPassword1 === "password1" ? "text" : "password"
+          }
           name="password1"
           onChange={handleInputChange}
           value={inputs.password1}
@@ -69,7 +57,7 @@ const Signup = () => {
 
         <button
           type="button"
-          onClick={() => handleClickShowPassword("password1")}
+          onClick={() => handleClickShowPassword1("password1")}
         >
           Show Password
         </button>
@@ -77,7 +65,9 @@ const Signup = () => {
       <div>
         <label>Re-enter Password</label>
         <input
-          type={values.showPassword === "password2" ? "text" : "password"}
+          type={
+            valuesPassword2.showPassword2 === "password2" ? "text" : "password"
+          }
           name="password2"
           onChange={handleInputChange}
           value={inputs.password2}
@@ -85,10 +75,11 @@ const Signup = () => {
         />
         <button
           type="button"
-          onClick={() => handleClickShowPassword("password2")}
+          onClick={() => handleClickShowPassword2("password2")}
         >
           Show Password
         </button>
+
         <div>
           <ul>
             <li>
