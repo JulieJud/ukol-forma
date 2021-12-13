@@ -1,7 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 
-const useSignUpForm = (callback) => {
+const useSignUpForm = () => {
   const [inputs, setInputs] = useState(() => {
     return {
       name: "",
@@ -10,22 +9,28 @@ const useSignUpForm = (callback) => {
       password2: "",
     };
   });
-  const [values, setValues] = useState({
-    showPassword: false,
-  });
+  const { name, email, password1, password2 } = inputs;
 
-  const handleClickShowPassword = (fieldName) => {
-    setValues({
-      ...values,
-      showPassword: fieldName === values.showPassword ? "" : fieldName,
+  const [valuesPassword1, setValuesPassword1] = useState({
+    showPassword1: false,
+  });
+  const handleClickShowPassword1 = (fieldName) => {
+    setValuesPassword1({
+      showPassword1:
+        fieldName === valuesPassword1.showPassword1 ? "" : fieldName,
     });
   };
-  /* const handleNameChange = (event) => {
-    const index = inputs.email.indexOf("@");
-    const name = inputs.email.slice(0, index);
-    inputs.name = name;
-    console.log(name);
-  };*/
+
+  const [valuesPassword2, setValuesPassword2] = useState({
+    showPassword2: false,
+  });
+
+  const handleClickShowPassword2 = (fieldName) => {
+    setValuesPassword2({
+      showPassword2:
+        fieldName === valuesPassword2.showPassword2 ? "" : fieldName,
+    });
+  };
 
   const handleInputChange = (event) => {
     const name = inputs.email.substring(0, inputs.email.lastIndexOf("@"));
@@ -44,20 +49,27 @@ const useSignUpForm = (callback) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (inputs.password1 && inputs.password1 !== inputs.password2) {
-      alert("error");
+    if (password1 !== password2) {
+      alert("Password1 and Password2 should be the same");
     } else {
-      alert(setInputs());
+      console.log(inputs);
+      const newUser = { name, email, password1, password2 };
+      try {
+        const body = JSON.stringify(newUser);
+        alert(body);
+      } catch (err) {
+        console.error(err.response.data);
+      }
     }
   };
 
   return {
     handleSubmit,
-    // handleNameChange,
     handleInputChange,
-    //togglePassword,
-    handleClickShowPassword,
-    values,
+    handleClickShowPassword1,
+    handleClickShowPassword2,
+    valuesPassword1,
+    valuesPassword2,
     inputs,
   };
 };
