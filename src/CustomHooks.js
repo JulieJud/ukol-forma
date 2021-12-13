@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 const useSignUpForm = (callback) => {
   const [inputs, setInputs] = useState(() => {
@@ -39,13 +40,11 @@ const useSignUpForm = (callback) => {
       ...inputs,
       [event.target.name]: event.target.value,
     }));
-
-    console.log(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (inputs.password1 !== inputs.password2) {
+    if (inputs.password1 && inputs.password1 !== inputs.password2) {
       alert("error");
     } else {
       alert(setInputs());
