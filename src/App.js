@@ -25,8 +25,8 @@ const Signup = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+        <div className="mb-4 ">
+          <label className="block text-gray-400 text-sm font-bold mb-2">
             Email Address
           </label>
           <input
@@ -36,11 +36,11 @@ const Signup = () => {
             onChange={handleInputChange}
             value={inputs.email}
             required
-            className=" border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="  border bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  disabled:border-gray-50 disabled:bg-gray-50 disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label className="block text-gray-400 text-sm font-bold mb-2">
             User name
           </label>
           <input
@@ -50,12 +50,12 @@ const Signup = () => {
             value={inputs.name}
             maxLength={12}
             required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="  border bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  disabled:border-gray-50 disabled:bg-gray-50 disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
           />
         </div>
 
         <div className="mb-4 relative">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label className="block text-gray-400 text-sm font-bold mb-2">
             Password
           </label>
           <input
@@ -68,7 +68,7 @@ const Signup = () => {
             onChange={handleInputChange}
             value={inputs.password1}
             required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className=" border bg-gray-100 border-gray-200 rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
           />
           <div
             className="absolute inset-y-1/2 right-0 pr-3 flex "
@@ -114,7 +114,7 @@ const Signup = () => {
           </div>
         </div>
         <div className="mb-4 relative">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label className="block text-gray-400 text-sm font-bold mb-2">
             Re-enter Password
           </label>
           <input
@@ -127,7 +127,7 @@ const Signup = () => {
             onChange={handleInputChange}
             value={inputs.password2}
             required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className=" border bg-gray-100 border-gray-200 rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
           />
           <div
             className="absolute inset-y-1/2 right-0 pr-3 flex  "
@@ -172,33 +172,114 @@ const Signup = () => {
             )}
           </div>
         </div>
-        <div className="mb-4">
+        <div className="mb-6">
           <ul>
-            <li>
-              Valid Length:{" "}
-              {validLength ? <span>True</span> : <span>False</span>}
+            <li className="mb-4 flex text-gray-400 ">
+              {!inputs.password1 && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-4"
+                  fill="gray"
+                  viewBox="0 0 24 24"
+                  stroke="white"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              )}
+              {inputs.password1 && validLength ? (
+                <span>zelenoe</span>
+              ) : (
+                <span></span>
+              )}
+              {inputs.password1 && !validLength ? (
+                <span>krasnoe</span>
+              ) : (
+                <span></span>
+              )}
+              At least 8 characters
             </li>
-            <li>
-              Has a Number: {hasNumber ? <span>True</span> : <span>False</span>}
+
+            <li className="mb-4 flex text-gray-400 ">
+              {!inputs.password1 && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-4"
+                  fill="gray"
+                  viewBox="0 0 24 24"
+                  stroke="white"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              )}
+              {inputs.password1 && upperCase && lowerCase ? (
+                <span>zelenoe</span>
+              ) : (
+                <span></span>
+              )}
+              {inputs.password1 || (upperCase && !lowerCase) ? (
+                <span>krasnoe</span>
+              ) : (
+                <span></span>
+              )}
+              At least 1 uppercase and 1 lowercase letter
             </li>
-            <li>
-              UpperCase: {upperCase ? <span>True</span> : <span>False</span>}
-            </li>
-            <li>
-              LowerCase: {lowerCase ? <span>True</span> : <span>False</span>}
-            </li>
-            <li>Match: {match ? <span>True</span> : <span>False</span>}</li>
-            <li>
-              Special Character:{" "}
-              {specialChar ? <span>True</span> : <span>False</span>}
+
+            <li className="mb-4 flex text-gray-400 ">
+              {!inputs.password1 && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-4"
+                  fill="gray"
+                  viewBox="0 0 24 24"
+                  stroke="white"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              )}
+              {inputs.password1 && specialChar ? (
+                <span>zelenoe</span>
+              ) : (
+                <span></span>
+              )}
+              {inputs.password1 && !specialChar ? (
+                <span>krasnoe</span>
+              ) : (
+                <span></span>
+              )}
+              At least special characters (like ! @ % $ # ^)
             </li>
           </ul>
         </div>
 
         <button
+          disabled={
+            inputs.password1 !== inputs.password2 &&
+            !inputs.validLength &&
+            !inputs.hasNumber &&
+            !inputs.upperCase &&
+            !inputs.lowerCase &&
+            !inputs.specialChar
+              ? true
+              : false
+          }
           type="submit"
-          className="mt-3 text-sm font-semibold
-            bg-orange-400 w-full text-white rounded-lg
+          className="mt-3 items-centre w-2/5 text-sm font-semibold
+            bg-orange-400  text-white rounded-lg
             px-6 py-3 block shadow-xl  hover:bg-amber-700 active:bg-amber-800  focus:bg-amber-600 disabled:bg-orange-100 disabled:cursor-auto
 disabled:pointer-events-none"
         >

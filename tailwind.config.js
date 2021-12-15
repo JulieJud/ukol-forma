@@ -5,6 +5,7 @@ module.exports = {
     colors: {
       current: "currentColor",
       white: "#ffffff",
+      blue: "#bfdbfe",
       orange: {
         400: "#fb923c",
         100: "#ffedd5",
@@ -13,6 +14,12 @@ module.exports = {
         600: "#d97706",
         700: "#b45309",
         800: "#92400e",
+      },
+      gray: {
+        400: "#9ca3af",
+        200: "#e5e7eb",
+        100: "#f3f4f6",
+        50: "#f9fafb",
       },
     },
   },

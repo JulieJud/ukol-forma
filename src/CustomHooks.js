@@ -49,17 +49,13 @@ const useSignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password1 !== password2) {
-      alert("Password1 and Password2 should be the same");
-    } else {
-      console.log(inputs);
-      const newUser = { name, email, password1, password2 };
-      try {
-        const body = JSON.stringify(newUser);
-        alert(body);
-      } catch (err) {
-        console.error(err.response.data);
-      }
+
+    const newUser = { name, email, password1, password2 };
+    try {
+      const body = JSON.stringify(newUser);
+      alert(body);
+    } catch (err) {
+      console.error(err.response.data);
     }
   };
 
