@@ -30,13 +30,14 @@ const Signup = () => {
             Email Address
           </label>
           <input
+            disabled={inputs.password2 && true}
             type="email"
             name="email"
             autoComplete="off"
             onChange={handleInputChange}
             value={inputs.email}
             required
-            className="  border bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  disabled:border-gray-50 disabled:bg-gray-50 disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
+            className="  border-2 bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  focus:outline-none disabled:border-1 disabled:border-gray-100 disabled:bg-gray-50  disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
           />
         </div>
         <div className="mb-4">
@@ -44,13 +45,14 @@ const Signup = () => {
             User name
           </label>
           <input
+            disabled={inputs.password2 && true}
             type="text"
             name="name"
             onChange={handleInputChange}
             value={inputs.name}
             maxLength={12}
             required
-            className="  border bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  disabled:border-gray-50 disabled:bg-gray-50 disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
+            className="  border-2 bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  focus:outline-none disabled:border-1 disabled:border-gray-100 disabled:bg-gray-50  disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
           />
         </div>
 
@@ -174,94 +176,198 @@ const Signup = () => {
         </div>
         <div className="mb-6">
           <ul>
-            <li className="mb-4 flex text-gray-400 ">
+            <li className="mb-4 flex ">
               {!inputs.password1 && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mr-4"
-                  fill="gray"
-                  viewBox="0 0 24 24"
-                  stroke="white"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+                <span className="text-gray-400 flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 mr-4"
+                    fill="gray"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  At least 8 characters
+                </span>
               )}
               {inputs.password1 && validLength ? (
-                <span>zelenoe</span>
+                <span className="text-green flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="green"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  At least 8 characters
+                </span>
               ) : (
                 <span></span>
               )}
               {inputs.password1 && !validLength ? (
-                <span>krasnoe</span>
+                <span className="text-red flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="red"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  At least 8 characters
+                </span>
               ) : (
                 <span></span>
               )}
-              At least 8 characters
             </li>
 
-            <li className="mb-4 flex text-gray-400 ">
+            <li className="mb-4 flex ">
               {!inputs.password1 && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mr-4"
-                  fill="gray"
-                  viewBox="0 0 24 24"
-                  stroke="white"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+                <span className="flex text-gray-400 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 mr-4"
+                    fill="gray"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  At least 1 uppercase and 1 lowercase letter
+                </span>
               )}
               {inputs.password1 && upperCase && lowerCase ? (
-                <span>zelenoe</span>
+                <span className="flex text-green ">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="green"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  At least 1 uppercase and 1 lowercase letter
+                </span>
               ) : (
                 <span></span>
               )}
-              {inputs.password1 || (upperCase && !lowerCase) ? (
-                <span>krasnoe</span>
+              {inputs.password1 && (!upperCase || !lowerCase) ? (
+                <span className="flex text-red ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="red"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  At least 1 uppercase and 1 lowercase letter
+                </span>
               ) : (
                 <span></span>
               )}
-              At least 1 uppercase and 1 lowercase letter
             </li>
 
-            <li className="mb-4 flex text-gray-400 ">
+            <li className="mb-4 flex ">
               {!inputs.password1 && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mr-4"
-                  fill="gray"
-                  viewBox="0 0 24 24"
-                  stroke="white"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+                <span className="flex text-gray-400 ">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 mr-4"
+                    fill="gray"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  At least special characters (like ! @ % $ # ^)
+                </span>
               )}
               {inputs.password1 && specialChar ? (
-                <span>zelenoe</span>
+                <span className="flex text-green ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="green"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>{" "}
+                  At least special characters (like ! @ % $ # ^)
+                </span>
               ) : (
                 <span></span>
               )}
               {inputs.password1 && !specialChar ? (
-                <span>krasnoe</span>
+                <span className="flex text-red ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="red"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>{" "}
+                  At least special characters (like ! @ % $ # ^)
+                </span>
               ) : (
                 <span></span>
               )}
-              At least special characters (like ! @ % $ # ^)
             </li>
           </ul>
         </div>

@@ -6,6 +6,8 @@ module.exports = {
       current: "currentColor",
       white: "#ffffff",
       blue: "#bfdbfe",
+      green: "#15803d",
+      red: "#b91c1c",
       orange: {
         400: "#fb923c",
         100: "#ffedd5",
@@ -25,6 +27,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      borderColor: ["responsive", "hover", "focus", "active", "disabled"],
       backgroundColor: ["responsive", "hover", "focus", "active", "disabled"],
       cursor: ["disabled"],
       pointerEvents: ["disabled"],
