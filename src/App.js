@@ -60,18 +60,47 @@ const Signup = () => {
           <label className="block text-gray-400 text-sm font-bold mb-2">
             Password
           </label>
-          <input
-            type={
-              valuesPassword1.showPassword1 === "password1"
-                ? "text"
-                : "password"
-            }
-            name="password1"
-            onChange={handleInputChange}
-            value={inputs.password1}
-            required
-            className=" border bg-gray-100 border-gray-200 rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
-          />
+          {inputs.password1 && validLength ? (
+            <input
+              type={
+                valuesPassword1.showPassword1 === "password1"
+                  ? "text"
+                  : "password"
+              }
+              name="password1"
+              onChange={handleInputChange}
+              value={inputs.password1}
+              required
+              className=" border bg-white border-green  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+            />
+          ) : inputs.password1 && !validLength ? (
+            <input
+              type={
+                valuesPassword1.showPassword1 === "password1"
+                  ? "text"
+                  : "password"
+              }
+              name="password1"
+              onChange={handleInputChange}
+              value={inputs.password1}
+              required
+              className=" border bg-white border-red  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+            />
+          ) : (
+            <input
+              type={
+                valuesPassword1.showPassword1 === "password1"
+                  ? "text"
+                  : "password"
+              }
+              name="password1"
+              onChange={handleInputChange}
+              value={inputs.password1}
+              required
+              className=" border bg-white border-gray-200  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+            />
+          )}
+
           <div
             className="absolute inset-y-1/2 right-0 pr-3 flex "
             onClick={() => handleClickShowPassword1("password1")}
@@ -129,7 +158,7 @@ const Signup = () => {
             onChange={handleInputChange}
             value={inputs.password2}
             required
-            className=" border bg-gray-100 border-gray-200 rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
+            className=" border bg-gray-100 border-green rounded-full w-full py-2 px-3 text-gray-400 leading-tight  focus:outline-none  "
           />
           <div
             className="absolute inset-y-1/2 right-0 pr-3 flex  "
@@ -175,7 +204,7 @@ const Signup = () => {
           </div>
         </div>
         <div className="mb-6">
-          <ul>
+          <ul className="">
             <li className="mb-4 flex ">
               {!inputs.password1 && (
                 <span className="text-gray-400 flex">
