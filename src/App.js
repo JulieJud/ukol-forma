@@ -59,53 +59,73 @@ const Signup = () => {
         </div>
         {/*password*/}
         <div className="mb-4 relative">
-          <label className="block text-gray-400 text-sm font-bold mb-2">
+          <label className="  group block text-gray-400 text-sm font-bold mb-2">
             Password
+            {/*valid */}
+            {inputs.password1 && validLength ? (
+              <input
+                type={
+                  valuesPassword1.showPassword1 === "password1"
+                    ? "text"
+                    : "password"
+                }
+                name="password1"
+                onChange={handleInputChange}
+                value={inputs.password1}
+                required
+                className=" border-2 bg-white border-green  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+              />
+            ) : inputs.password1 && !validLength ? (
+              //noValid
+              <input
+                type={
+                  valuesPassword1.showPassword1 === "password1"
+                    ? "text"
+                    : "password"
+                }
+                name="password1"
+                onChange={handleInputChange}
+                value={inputs.password1}
+                required
+                className=" border-2 bg-white border-red  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+              />
+            ) : (
+              //defoult
+              <input
+                type={
+                  valuesPassword1.showPassword1 === "password1"
+                    ? "text"
+                    : "password"
+                }
+                name="password1"
+                onChange={handleInputChange}
+                value={inputs.password1}
+                required
+                className=" border-2 bg-gray-100 border-gray-200  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+              />
+            )}
+            {inputs.password1 && validLength ? (
+              <span className=" opacity-0 group-focus:opacity-1 text-green flex">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="green"
+                  viewBox="0 0 24 24"
+                  stroke="white"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                At least 8 characters
+              </span>
+            ) : (
+              <span></span>
+            )}
           </label>
-          {/*valid */}
-
-          {inputs.password1 && validLength ? (
-            <input
-              type={
-                valuesPassword1.showPassword1 === "password1"
-                  ? "text"
-                  : "password"
-              }
-              name="password1"
-              onChange={handleInputChange}
-              value={inputs.password1}
-              required
-              className=" border-2 bg-white border-green  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
-            />
-          ) : inputs.password1 && !validLength ? (
-            //noValid
-            <input
-              type={
-                valuesPassword1.showPassword1 === "password1"
-                  ? "text"
-                  : "password"
-              }
-              name="password1"
-              onChange={handleInputChange}
-              value={inputs.password1}
-              required
-              className=" border-2 bg-white border-red  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
-            />
-          ) : (
-            //defoult
-            <input
-              type={
-                valuesPassword1.showPassword1 === "password1"
-                  ? "text"
-                  : "password"
-              }
-              name="password1"
-              onChange={handleInputChange}
-              value={inputs.password1}
-              required
-              className=" border-2 bg-gray-100 border-gray-200  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
-            />
-          )}
 
           {/*showHidePasswordPicture */}
           <div
@@ -237,29 +257,28 @@ const Signup = () => {
                 </span>
               )}
               {/*validText */}
-              <div className="">
-                {inputs.password1 && validLength ? (
-                  <span className=" text-green flex">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="green"
-                      viewBox="0 0 24 24"
-                      stroke="white"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    At least 8 characters
-                  </span>
-                ) : (
-                  <span></span>
-                )}
-              </div>
+              {/*  {inputs.password1 && validLength ? (
+                <span className=" text-green flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="green"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  At least 8 characters
+                </span>
+              ) : (
+                <span></span>
+              )}
+              */}
               {/*noValidText */}
               {inputs.password1 && !validLength ? (
                 <span className="text-red flex">
@@ -434,7 +453,7 @@ const Signup = () => {
               : false
           }
           type="submit"
-          className="mt-3 items-centre w-2/5 text-sm font-semibold
+          className="mt-3 mx-auto w-2/5 text-sm font-semibold
             bg-orange-400  text-white rounded-lg
             px-6 py-3 block shadow-xl  hover:bg-amber-700 active:bg-amber-800  focus:bg-amber-600 disabled:bg-orange-100 disabled:cursor-auto
 disabled:pointer-events-none"
