@@ -62,7 +62,8 @@ const Signup = () => {
           <label className="block text-gray-400 text-sm font-bold mb-2">
             Password
           </label>
-          {inputs.password1 && validLength ? (
+          {/*passwordValid*/}
+          {inputs.password1 && validLength && (
             <input
               type={
                 valuesPassword1.showPassword1 === "password1"
@@ -73,9 +74,11 @@ const Signup = () => {
               onChange={handleInputChange}
               value={inputs.password1}
               required
-              className=" border bg-white border-green  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+              className="peer border bg-white border-green  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
             />
-          ) : inputs.password1 && !validLength ? (
+          )}
+          {/*passwordNoValid*/}
+          {inputs.password1 && !validLength && (
             <input
               type={
                 valuesPassword1.showPassword1 === "password1"
@@ -86,9 +89,11 @@ const Signup = () => {
               onChange={handleInputChange}
               value={inputs.password1}
               required
-              className=" border bg-white border-red  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+              className="peer border bg-white border-red  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
             />
-          ) : (
+          )}
+          {/*passwordDefault*/}
+          {!inputs.password1 && !validLength && (
             <input
               type={
                 valuesPassword1.showPassword1 === "password1"
@@ -103,113 +108,9 @@ const Signup = () => {
             />
           )}
 
-          {/*showHidePasswordPicture */}
-          <div
-            className="absolute inset-y-1/2 right-0 pr-3 flex "
-            onClick={() => handleClickShowPassword1("password1")}
-          >
-            {!valuesPassword1.showPassword1 ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="grey"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="grey"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-            )}
-          </div>
-        </div>
-        {/*rePassword */}
-        <div className="mb-4 relative">
-          <label className="block text-gray-400 text-sm font-bold mb-2">
-            Re-enter Password
-          </label>
-          <input
-            type={
-              valuesPassword2.showPassword2 === "password2"
-                ? "text"
-                : "password"
-            }
-            name="password2"
-            onChange={handleInputChange}
-            value={inputs.password2}
-            required
-            className=" border-2 bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  focus:outline-none disabled:border-1 disabled:border-gray-100 disabled:bg-gray-50  disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
-          />
-          <div
-            className="absolute inset-y-1/2 right-0 pr-3 flex  "
-            onClick={() => handleClickShowPassword2("password2")}
-          >
-            {!valuesPassword2.showPassword2 ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="grey"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="grey"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-            )}
-          </div>
-        </div>
-        {/*validList */}
-        <div className="mb-6">
-          <ul className="">
+          {/*validList */}
+
+          <ul className="mb-6 mt-6 peer-focus: ">
             {/*8 characters */}
             <li className="mb-4 flex ">
               {/*default */}
@@ -415,7 +316,112 @@ const Signup = () => {
               )}
             </li>
           </ul>
+
+          {/*showHidePasswordPicture */}
+          <div
+            className="absolute top-9 right-0 pr-3 flex "
+            onClick={() => handleClickShowPassword1("password1")}
+          >
+            {!valuesPassword1.showPassword1 ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="grey"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="grey"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+            )}
+          </div>
         </div>
+        {/*rePassword */}
+        <div className="mb-4 relative">
+          <label className="block text-gray-400 text-sm font-bold mb-2">
+            Re-enter Password
+          </label>
+          <input
+            type={
+              valuesPassword2.showPassword2 === "password2"
+                ? "text"
+                : "password"
+            }
+            name="password2"
+            onChange={handleInputChange}
+            value={inputs.password2}
+            required
+            className=" border-2 bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  focus:outline-none disabled:border-1 disabled:border-gray-100 disabled:bg-gray-50  disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
+          />
+          <div
+            className="absolute inset-y-1/2 right-0 pr-3 flex  "
+            onClick={() => handleClickShowPassword2("password2")}
+          >
+            {!valuesPassword2.showPassword2 ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="grey"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="grey"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+            )}
+          </div>
+        </div>
+
         {/*subbmitButton */}
         <button
           disabled={
