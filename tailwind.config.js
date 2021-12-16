@@ -31,6 +31,7 @@ module.exports = {
       backgroundColor: ["responsive", "hover", "focus", "active", "disabled"],
       cursor: ["disabled"],
       pointerEvents: ["disabled"],
+      opacity: ["responsive", "hover", "focus", "group-focus"],
     },
   },
   plugins: [],

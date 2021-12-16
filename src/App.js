@@ -13,7 +13,7 @@ const Signup = () => {
     handleClickShowPassword2,
   } = useSignUpForm();
 
-  const [validLength, hasNumber, upperCase, lowerCase, match, specialChar] =
+  const [validLength, upperCase, lowerCase, specialChar] =
     usePasswordValidation({
       password1: inputs.password1,
       password2: inputs.password2,
@@ -25,8 +25,9 @@ const Signup = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
+        {/*email */}
         <div className="mb-4 ">
-          <label className="block text-gray-400 text-sm font-bold mb-2">
+          <label className="  block text-gray-400  text-sm font-bold mb-2">
             Email Address
           </label>
           <input
@@ -37,11 +38,12 @@ const Signup = () => {
             onChange={handleInputChange}
             value={inputs.email}
             required
-            className="  border-2 bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  focus:outline-none disabled:border-1 disabled:border-gray-100 disabled:bg-gray-50  disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
+            className=" border-2 bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  focus:outline-none disabled:border-1 disabled:border-gray-100 disabled:bg-gray-50  disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
           />
         </div>
+        {/*name */}
         <div className="mb-4">
-          <label className="block text-gray-400 text-sm font-bold mb-2">
+          <label className=" block text-gray-400 text-sm font-bold mb-2">
             User name
           </label>
           <input
@@ -55,11 +57,13 @@ const Signup = () => {
             className="  border-2 bg-gray-100 border-gray-200 hover:border-blue  focus:border-blue focus:bg-white  focus:outline-none disabled:border-1 disabled:border-gray-100 disabled:bg-gray-50  disabled:cursor-auto rounded-full w-full py-2 px-3 text-gray-400 leading-tight "
           />
         </div>
-
+        {/*password*/}
         <div className="mb-4 relative">
           <label className="block text-gray-400 text-sm font-bold mb-2">
             Password
           </label>
+          {/*valid */}
+
           {inputs.password1 && validLength ? (
             <input
               type={
@@ -71,9 +75,10 @@ const Signup = () => {
               onChange={handleInputChange}
               value={inputs.password1}
               required
-              className=" border bg-white border-green  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+              className=" border-2 bg-white border-green  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
             />
           ) : inputs.password1 && !validLength ? (
+            //noValid
             <input
               type={
                 valuesPassword1.showPassword1 === "password1"
@@ -84,9 +89,10 @@ const Signup = () => {
               onChange={handleInputChange}
               value={inputs.password1}
               required
-              className=" border bg-white border-red  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+              className=" border-2 bg-white border-red  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
             />
           ) : (
+            //defoult
             <input
               type={
                 valuesPassword1.showPassword1 === "password1"
@@ -97,10 +103,11 @@ const Signup = () => {
               onChange={handleInputChange}
               value={inputs.password1}
               required
-              className=" border bg-white border-gray-200  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
+              className=" border-2 bg-gray-100 border-gray-200  rounded-full w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none"
             />
           )}
 
+          {/*showHidePasswordPicture */}
           <div
             className="absolute inset-y-1/2 right-0 pr-3 flex "
             onClick={() => handleClickShowPassword1("password1")}
@@ -144,6 +151,7 @@ const Signup = () => {
             )}
           </div>
         </div>
+        {/*rePassword */}
         <div className="mb-4 relative">
           <label className="block text-gray-400 text-sm font-bold mb-2">
             Re-enter Password
@@ -158,7 +166,7 @@ const Signup = () => {
             onChange={handleInputChange}
             value={inputs.password2}
             required
-            className=" border bg-gray-100 border-green rounded-full w-full py-2 px-3 text-gray-400 leading-tight  focus:outline-none  "
+            className=" border-2 bg-gray-100 border-gray-200 rounded-full w-full py-2 px-3 text-gray-400 leading-tight  focus:outline-none  "
           />
           <div
             className="absolute inset-y-1/2 right-0 pr-3 flex  "
@@ -203,9 +211,12 @@ const Signup = () => {
             )}
           </div>
         </div>
+        {/*validList */}
         <div className="mb-6">
           <ul className="">
+            {/*8 characters */}
             <li className="mb-4 flex ">
+              {/*default */}
               {!inputs.password1 && (
                 <span className="text-gray-400 flex">
                   <svg
@@ -216,49 +227,53 @@ const Signup = () => {
                     stroke="white"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
                   At least 8 characters
                 </span>
               )}
-              {inputs.password1 && validLength ? (
-                <span className="text-green flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="green"
-                    viewBox="0 0 24 24"
-                    stroke="white"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  At least 8 characters
-                </span>
-              ) : (
-                <span></span>
-              )}
+              {/*validText */}
+              <div className="">
+                {inputs.password1 && validLength ? (
+                  <span className=" text-green flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="green"
+                      viewBox="0 0 24 24"
+                      stroke="white"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    At least 8 characters
+                  </span>
+                ) : (
+                  <span></span>
+                )}
+              </div>
+              {/*noValidText */}
               {inputs.password1 && !validLength ? (
                 <span className="text-red flex">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="red"
                     viewBox="0 0 24 24"
                     stroke="white"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
@@ -268,8 +283,9 @@ const Signup = () => {
                 <span></span>
               )}
             </li>
-
+            {/*upperCase-lowerCase */}
             <li className="mb-4 flex ">
+              {/*default */}
               {!inputs.password1 && (
                 <span className="flex text-gray-400 ">
                   <svg
@@ -280,29 +296,30 @@ const Signup = () => {
                     stroke="white"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
                   At least 1 uppercase and 1 lowercase letter
                 </span>
               )}
+              {/*validText */}
               {inputs.password1 && upperCase && lowerCase ? (
                 <span className="flex text-green ">
                   {" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="green"
                     viewBox="0 0 24 24"
                     stroke="white"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
@@ -311,19 +328,20 @@ const Signup = () => {
               ) : (
                 <span></span>
               )}
+              {/*noValidText */}
               {inputs.password1 && (!upperCase || !lowerCase) ? (
                 <span className="flex text-red ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="red"
                     viewBox="0 0 24 24"
                     stroke="white"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
@@ -333,8 +351,9 @@ const Signup = () => {
                 <span></span>
               )}
             </li>
-
+            {/*special character */}
             <li className="mb-4 flex ">
+              {/*default */}
               {!inputs.password1 && (
                 <span className="flex text-gray-400 ">
                   {" "}
@@ -346,28 +365,29 @@ const Signup = () => {
                     stroke="white"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
                   At least special characters (like ! @ % $ # ^)
                 </span>
               )}
+              {/*validText */}
               {inputs.password1 && specialChar ? (
                 <span className="flex text-green ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="green"
                     viewBox="0 0 24 24"
                     stroke="white"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>{" "}
@@ -376,19 +396,20 @@ const Signup = () => {
               ) : (
                 <span></span>
               )}
+              {/*noValidText */}
               {inputs.password1 && !specialChar ? (
                 <span className="flex text-red ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="red"
                     viewBox="0 0 24 24"
                     stroke="white"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>{" "}
@@ -400,7 +421,7 @@ const Signup = () => {
             </li>
           </ul>
         </div>
-
+        {/*subbmitButton */}
         <button
           disabled={
             inputs.password1 !== inputs.password2 &&
