@@ -78,6 +78,8 @@ const useSignUpForm = () => {
   };
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
+
     const newUser = { name, email, password1, password2 };
     try {
       const body = JSON.stringify(newUser);
