@@ -9,21 +9,51 @@ const useSignUpForm = () => {
       password2: "",
     };
   });
+
   const { name, email, password1, password2 } = inputs;
 
   const [valuesPassword1, setValuesPassword1] = useState({
     showPassword1: false,
   });
+
+  const [isValid, setIsValid] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
+  const [isBlur, setIsBlur] = useState(false);
+
+  const [valuesPassword2, setValuesPassword2] = useState({
+    showPassword2: false,
+  });
+  const focusHandler = (event) => {
+    setIsFocus(true);
+
+    console.log(event);
+  };
+
+  const blurHandler = (event) => {
+    setIsFocus(false);
+    setIsBlur(true);
+
+    if (
+      inputs.password1 &&
+      inputs.validLength &&
+      inputs.upperCase &&
+      inputs.lowerCase &&
+      inputs.specialChar
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+
+    console.log(event);
+  };
+
   const handleClickShowPassword1 = (fieldName) => {
     setValuesPassword1({
       showPassword1:
         fieldName === valuesPassword1.showPassword1 ? "" : fieldName,
     });
   };
-
-  const [valuesPassword2, setValuesPassword2] = useState({
-    showPassword2: false,
-  });
 
   const handleClickShowPassword2 = (fieldName) => {
     setValuesPassword2({
@@ -33,11 +63,11 @@ const useSignUpForm = () => {
   };
 
   const handleInputChange = (event) => {
-    const name = inputs.email.substring(0, inputs.email.lastIndexOf("@"));
+    const nameValid = email.substring(0, email.lastIndexOf("@"));
     if (name.length < 12) {
-      inputs.name = name;
+      inputs.name = nameValid;
     } else {
-      inputs.name = inputs.email.substring(0, 12);
+      inputs.name = email.substring(0, 12);
     }
 
     event.persist();
@@ -52,7 +82,7 @@ const useSignUpForm = () => {
 
     const newUser = { name, email, password1, password2 };
     try {
-      const body = JSON.stringify(newUser);
+      const body = await JSON.stringify(newUser);
       alert(body);
     } catch (err) {
       console.error(err.response.data);
@@ -64,9 +94,15 @@ const useSignUpForm = () => {
     handleInputChange,
     handleClickShowPassword1,
     handleClickShowPassword2,
+    focusHandler,
+    blurHandler,
+
     valuesPassword1,
     valuesPassword2,
     inputs,
+    isFocus,
+    isBlur,
+    isValid,
   };
 };
 

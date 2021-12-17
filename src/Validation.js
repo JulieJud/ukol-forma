@@ -13,11 +13,11 @@ export const usePasswordValidation = ({
   //const [match, setMatch] = useState(null);
 
   useEffect(() => {
-    setValidLength(password1.length >= requiredLength ? true : false);
+    setValidLength(password1.length >= requiredLength);
     setUpperCase(password1.toLowerCase() !== password1);
     setLowerCase(password1.toUpperCase() !== password1);
-    // setHasNumber(/\d/.test(password1));
-    // setMatch(password1 && password1 === password2);
+    //setHasNumber(/\d/.test(password1));
+    //setMatch(password1 && password1 === password2);
     setSpecialChar(/[ `!@#$%^&*()_+\-=\]{};':"\\|,.<>?~]/.test(password1));
   }, [password1, password2, requiredLength]);
 
