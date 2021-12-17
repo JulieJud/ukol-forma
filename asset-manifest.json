@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ukol-forma/static/css/main.d64f29b7.chunk.css",
-    "main.js": "/ukol-forma/static/js/main.349b90f3.chunk.js",
-    "main.js.map": "/ukol-forma/static/js/main.349b90f3.chunk.js.map",
+    "main.js": "/ukol-forma/static/js/main.8d0d6671.chunk.js",
+    "main.js.map": "/ukol-forma/static/js/main.8d0d6671.chunk.js.map",
     "runtime-main.js": "/ukol-forma/static/js/runtime-main.1ba92c4e.js",
     "runtime-main.js.map": "/ukol-forma/static/js/runtime-main.1ba92c4e.js.map",
     "static/js/2.60e7c426.chunk.js": "/ukol-forma/static/js/2.60e7c426.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.1ba92c4e.js",
     "static/js/2.60e7c426.chunk.js",
     "static/css/main.d64f29b7.chunk.css",
-    "static/js/main.349b90f3.chunk.js"
+    "static/js/main.8d0d6671.chunk.js"
   ]
 }
