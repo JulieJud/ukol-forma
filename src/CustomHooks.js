@@ -78,11 +78,9 @@ const useSignUpForm = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-
     const newUser = { name, email, password1, password2 };
     try {
-      const body = await JSON.stringify(newUser);
+      const body = JSON.stringify(newUser);
       alert(body);
     } catch (err) {
       console.error(err.response.data);
